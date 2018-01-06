@@ -1,45 +1,55 @@
 <template>
     <!-- 顶部导航 -->
     <div class="b-header">
-      <nav class="ui inverted attached segment m-padded-mini">
+      <!--导航-->
+      <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
         <div class="ui container">
           <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">Lambda-Blog</h2>
-            <router-link :to="{name: 'Home'}" class="m-item item m-mobile-hide">
-              <i class="mini home icon"></i>首页
-            </router-link>
-            <router-link :to="{name: 'Category'}" class="m-item item m-mobile-hide">
-              <i class="mini idea icon"></i>分类
-            </router-link>
-            <router-link :to="{name: 'Tags'}" class="m-item item m-mobile-hide">
-              <i class="mini tags icon"></i>标签
-            </router-link>
-            <router-link :to="{name: 'Archives'}" class="m-item item m-mobile-hide">
-              <i class="mini clone icon"> </i>归档
-            </router-link>
-            <router-link :to="{name: 'About'}" class="m-item item m-mobile-hide">
-              <i class="mini info icon"> </i>关于我
-            </router-link>
-
-            <div class="right m-item item m-mobile-hide">
-              <div class="ui icon inverted transparent input m-margin-tb-tiny">
-                <input type="text" placeholder="Search....">
-                <i class="search link icon"></i>
+            <h2 class="ui teal header item">博客后台</h2>
+            <router-link :to="{name: 'Blogs'}" class="active m-item item m-mobile-hide"><i class="mini home icon"></i>博客</router-link>
+            <a href="#" class=" m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+            <div class="right m-item m-mobile-hide menu">
+              <div class="ui dropdown item">
+                <div class="text">
+                  <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005">
+                  李仁密
+                </div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <a href="#" class="item">注销</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show" @click="toggle()">
           <i class="sidebar icon"></i>
         </a>
       </nav>
+
     </div>
 </template>
 
 <script>
     export default {
-        name: "header.vue"
+        name: "header",
+        mounted(){
+          $('.ui.dropdown').dropdown({
+            on : 'click'
+          });
+        },
+        methods: {
+          // 显示隐藏移动端导航
+          toggle (){
+            $('.m-item').toggleClass('m-mobile-hide');
+          }
+        }
     }
+
+
+
+
 </script>
 
 <style>
